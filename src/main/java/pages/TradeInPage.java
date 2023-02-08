@@ -1,7 +1,13 @@
 package pages;
 
 import com.codeborne.selenide.ElementsCollection;
+import com.codeborne.selenide.Selectors;
 import com.codeborne.selenide.SelenideElement;
+import org.openqa.selenium.By;
+import org.openqa.selenium.support.ui.ExpectedConditions;
+import org.openqa.selenium.support.ui.WebDriverWait;
+
+import java.time.Duration;
 
 import static com.codeborne.selenide.Selectors.byId;
 import static com.codeborne.selenide.Selectors.byText;

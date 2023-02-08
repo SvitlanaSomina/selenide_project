@@ -7,18 +7,11 @@ import pages.TradeInPage;
 public class TradeInPageSteps {
     TradeInPage tradeInPage = new TradeInPage();
 
-    public TradeInPageSteps checkWhetherPageTitleIsVisible() {
+    public TradeInPageSteps checkDeviceTypeFormElements(String expectedText) {
         tradeInPage.getPageTitle().shouldBe(Condition.visible);
-        return this;
-    }
-
-    public TradeInPageSteps checkWhetherDeviceTypeLabelIsVisible() {
         tradeInPage.getDeviceTypeLabel().shouldBe(Condition.visible);
-        return this;
-    }
-
-    public TradeInPageSteps checkCategoryContainerText(String expectedText) {
         tradeInPage.getCategoryContainer().shouldHave(Condition.text(expectedText));
+        clickNextButton();
         return this;
     }
 
@@ -27,33 +20,20 @@ public class TradeInPageSteps {
         return this;
     }
 
-    public TradeInPageSteps selectModel(String model) {
+    public TradeInPageSteps fillInSmartphoneInfo(String model, String product) {;
         tradeInPage.getSelectModelDropdown().selectOption(model);
-        return this;
-    }
-
-    public TradeInPageSteps selectProduct(String product) {
-        tradeInPage.getProductsSelectList().selectOption(product);
-        return this;
-    }
-
-    public TradeInPageSteps clickSelectProductDropdown() {
+        tradeInPage.getProductsSelectList().selectOptionContainingText(product);
         tradeInPage.getSelectProductDropdown().click();
-        return this;
-    }
-
-    public TradeInPageSteps checkWhetherPreviousButtonIsVisible() {
-        tradeInPage.getPreviousButton().shouldBe(Condition.visible);
-        return this;
-    }
-
-    public TradeInPageSteps checkWhetherNextButtonIsVisible() {
         tradeInPage.getNextButton().shouldBe(Condition.visible);
+        tradeInPage.getPreviousButton().shouldBe(Condition.visible);
+        clickNextButton();
         return this;
     }
 
-    public TradeInPageSteps checkWhetherDeviceTurnOnLabelIsVisible() {
+    public TradeInPageSteps fillInDeviceTurnOnInfo() {
         tradeInPage.getDeviceTurnOnLabel().shouldBe(Condition.visible);
+        clickYesButton();
+        clickNextButton();
         return this;
     }
 
@@ -62,8 +42,10 @@ public class TradeInPageSteps {
         return this;
     }
 
-    public TradeInPageSteps checkWhetherDeviceFunctionsLabelIsVisible() {
+    public TradeInPageSteps fillInDeviceFunctionsInfo() {
         tradeInPage.getDeviceFunctionsLabel().shouldBe(Condition.visible);
+        clickNoButton();
+        clickNextButton();
         return this;
     }
 
@@ -72,23 +54,17 @@ public class TradeInPageSteps {
         return this;
     }
 
-    public TradeInPageSteps checkWhetherDeviceStateLabelIsVisible() {
+    public TradeInPageSteps fillInDeviceStateInfo() {
         tradeInPage.getDeviceStateLabel().shouldBe(Condition.visible);
-        return this;
-    }
-
-    public TradeInPageSteps clickDisplayHasNoScratchesButton() {
         tradeInPage.getDisplayHasNoScratchesButton().click();
+        clickNextButton();
         return this;
     }
 
-    public TradeInPageSteps checkWhetherDeviceConfigurationLabelIsVisible() {
+    public TradeInPageSteps fillInDeviceConfigurationInfo() {
         tradeInPage.getDeviceConfigurationLabel().shouldBe(Condition.visible);
-        return this;
-    }
-
-    public TradeInPageSteps clickPartialConfigurationButton() {
         tradeInPage.getPartialConfigurationButton().click();
+        clickNextButton();
         return this;
     }
 

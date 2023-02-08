@@ -19,23 +19,27 @@ public class MonitorsPageSteps {
         return monitorsPage.getPriceTitle().getText();
     }
 
-    public MonitorsPageSteps clickAvailableProductsLabel() {
+    public MonitorsPageSteps selectOnlyAvailableProducts() {
         monitorsPage.getAvailableProductsLabel().click();
-        return this;
-    }
-
-    public MonitorsPageSteps checkWhetherAvailableProductsCheckboxIsChecked() {
         monitorsPage.getAvailableProductsCheckbox().shouldBe(Condition.checked);
         return this;
     }
 
-    public MonitorsPageSteps checkWhetherManufacturerTitleIsVisible() {
+    public MonitorsPageSteps selectManufacturer(String filterText, String pageTitleCategoryText) {
         monitorsPage.getManufacturerTitle().shouldBe(Condition.visible);
+        monitorsPage.getAcerLabel().click();
+        monitorsPage.getAcerCheckbox().shouldBe(Condition.checked);
+        monitorsPage.getAcerTag().shouldBe(Condition.visible);
+        monitorsPage.getAcerTag().shouldHave(Condition.text(filterText));
+        monitorsPage.getPageTitleCategory().shouldHave(Condition.text(pageTitleCategoryText));
         return this;
     }
 
-    public MonitorsPageSteps enterMaxPriceValue(String price) {
+    public MonitorsPageSteps selectMaxPrice(String price, String expectedText) {
         monitorsPage.getMaxPriceInput().setValue(price).pressEnter();
+        clickShowButton();
+        monitorsPage.getPriceTag().shouldBe(Condition.visible);
+        monitorsPage.getPriceTag().shouldHave(Condition.text(expectedText));
         return this;
     }
 
@@ -45,48 +49,15 @@ public class MonitorsPageSteps {
         return this;
     }
 
-    public MonitorsPageSteps checkWhetherPriceTagIsVisible() {
-        monitorsPage.getPriceTag().shouldBe(Condition.visible);
-        return this;
-    }
-
-    public MonitorsPageSteps checkPriceTagText(String expectedText) {
-        monitorsPage.getPriceTag().shouldHave(Condition.text(expectedText));
-        return this;
-    }
-
-    public MonitorsPageSteps clickAcerLabel() {
-        monitorsPage.getAcerLabel().click();
-        return this;
-    }
-
-    public MonitorsPageSteps checkWhetherAcerCheckboxIsChecked() {
-        monitorsPage.getAcerCheckbox().shouldBe(Condition.checked);
-        return this;
-    }
-
-    public MonitorsPageSteps checkWhetherAcerTagIsVisible() {
-        monitorsPage.getAcerTag().shouldBe(Condition.visible);
-        return this;
-    }
-
-    public MonitorsPageSteps checkAcerTagText(String expectedText) {
-        monitorsPage.getAcerTag().shouldHave(Condition.text(expectedText));
-        return this;
-    }
-
-    public MonitorsPageSteps checkWhetherResetFilterButtonIsVisible() {
+    public MonitorsPageSteps checkResetFilterButton(String expectedText) {
         monitorsPage.getResetFilterButton().shouldBe(Condition.visible);
-        return this;
-    }
-
-    public MonitorsPageSteps checkResetFilterButtonText(String expectedText) {
         monitorsPage.getResetFilterButton().shouldHave(Condition.text(expectedText));
         return this;
     }
 
-    public MonitorsPageSteps checkPageTitleCategoryText(String expectedText) {
-        monitorsPage.getPageTitleCategory().shouldHave(Condition.text(expectedText));
+    public MonitorsPageSteps checkFilteredMonitorsList(int elementsAmount, String categoryWord) {
+        checkElementsAmountInFilteredMonitorsList(elementsAmount);
+        checkWhetherElementsOfFilteredMonitorsListContainCategoryWord(categoryWord);
         return this;
     }
 
