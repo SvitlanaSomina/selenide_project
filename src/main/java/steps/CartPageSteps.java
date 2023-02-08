@@ -9,12 +9,8 @@ import static com.codeborne.selenide.WebDriverConditions.url;
 public class CartPageSteps {
     CartPage cartPage = new CartPage();
 
-    public CartPageSteps checkCartPageUrl(String url) {
+    public CartPageSteps checkCartContents(String url, String expectedCountValue) {
         webdriver().shouldHave(url(url));
-        return this;
-    }
-
-    public CartPageSteps checkChangeAmountCount(String expectedCountValue) {
         cartPage.getChangeAmountCount().shouldHave(Condition.value(expectedCountValue));
         return this;
     }
@@ -31,13 +27,9 @@ public class CartPageSteps {
         return cartPage.getTotalPrice().getText();
     }
 
-    public CartPageSteps checkWhetherContinueShoppingButtonIsVisible() {
-        cartPage.getContinueShoppingButton().shouldBe(Condition.visible);
-        return this;
-    }
-
-    public CartPageSteps checkWhetherCheckoutButtonIsVisible() {
+    public CartPageSteps checkCartButtonsVisibility() {
         cartPage.getCheckoutButton().shouldBe(Condition.visible);
+        cartPage.getContinueShoppingButton().shouldBe(Condition.visible);
         return this;
     }
 

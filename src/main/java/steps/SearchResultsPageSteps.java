@@ -9,16 +9,12 @@ import pages.SearchResultsPage;
 public class SearchResultsPageSteps {
     SearchResultsPage searchResultsPage = new SearchResultsPage();
 
-
-    public SearchResultsPageSteps checkWhetherSearchResultsContainCategoryWord(String categoryWord) {
+    public SearchResultsPageSteps checkSearchResults(String expectedPageTitle, String categoryWord, int elementsAmount) {
+        searchResultsPage.getPageTitle().shouldHave(Condition.text(expectedPageTitle));
         ElementsCollection elements = searchResultsPage.getSearchResults();
         for (SelenideElement element : elements) {
             element.shouldHave(Condition.text(categoryWord));
         }
-        return this;
-    }
-
-    public SearchResultsPageSteps checkElementsAmountOnSearchResultsPage(int elementsAmount) {
         searchResultsPage.getSearchResults().shouldHave(CollectionCondition.size(elementsAmount));
         return this;
     }
@@ -33,11 +29,6 @@ public class SearchResultsPageSteps {
 
     public SearchResultsPageSteps checkWhetherCartCountEqualsExpectedValue(String expectedValue) {
         searchResultsPage.getCartCount().shouldHave(Condition.text(expectedValue));
-        return this;
-    }
-
-    public SearchResultsPageSteps checkPageTitle(String expectedPageTitle) {
-        searchResultsPage.getPageTitle().shouldHave(Condition.text(expectedPageTitle));
         return this;
     }
 }
