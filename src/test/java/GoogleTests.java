@@ -17,7 +17,7 @@ public class GoogleTests {
     private static final int SEARCH_RESULTS_AMOUNT = 11;
     private static final String FILE_NAME = "screenshot";
     private static final String GOOGLE_LOGO = "//img[@alt = 'Google']";
-    private static final String MAIL_BUTTON = "//a[@class = 'gb_j']";
+    private static final String MAIL_BUTTON = "//a[@class = 'gb_p']";
 
     /**
      * 1. Open Google main page.
